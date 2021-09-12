@@ -1,0 +1,7 @@
+{
+  "name": "EbayRipoff",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
