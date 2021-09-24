@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Listing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <div class="container">
+          <input
+            type="file"
+            id="imageSelected"
+            name="imageSelected"
+            ngModel
+            imageSelected
+            required
+            hidden
+            (change)="onFileChanged($event)"
+          />
+          <label for="imageSelected" [ngClass]='{"addImage": !url}'
+            ><ion-icon
+              *ngIf="!url"
+              slot="start"
+              class="addImageIcon"
+              name="camera"
+            ></ion-icon>
+            <img
+              [src]="url"
+              class="img-responsive uploadedImage"
+              id="imageDisplay"
+          /></label>
+        </div>
+        <div class="card">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <h1 class="section-header">Item Details</h1>
+            <input
+              type="text"
+              ngModel
+              name="itemName"
+              id="itemName"
+              itemName
+              class="form-control"
+              required
+              placeholder="Item Name"
+            />
+            <div class="inputContainer">
+              <textarea
+                name="itemDesc"
+                ngModel
+                name="itemDesc"
+                itemDesc
+                placeholder="Item Description"
+                class="form-control"
+                required
+                rows="10"
+              ></textarea>
+            </div>
+            <div class="inputContainer">
+              <input
+                type="number"
+                ngModel
+                name="itemPrice"
+                itemPrice
+                class="form-control"
+                required
+                placeholder="Item Price In $"
+                min="1"
+                step="any"
+              />
+            </div>
+            <div class="inputContainer">
+              <ion-item>
+                <ion-label>Category</ion-label>
+                <ion-select
+                  placeholder="Select One"
+                  ngModel
+                  category
+                  name="category"
+                  required
+                >
+                  <ion-select-option value="tech">Tech</ion-select-option>
+                  <ion-select-option value="household"
+                    >Household</ion-select-option
+                  >
+                  <ion-select-option value="cars">Cars</ion-select-option>
+                  <ion-select-option value="nature">Nature</ion-select-option>
+                  <ion-select-option value="other">Other</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+            <div class="inputContainer">
+              <input
+                type="text"
+                ngModel
+                name="address"
+                address
+                class="form-control"
+                *ngIf="!user"
+                required
+                placeholder="Country, City, Address..."
+              />
+            </div>
+            <div class="inputContainer">
+              <input
+                type="email"
+                ngModel
+                name="email"
+                email
+                class="form-control"
+                *ngIf="!user"
+                required
+                placeholder="Email"
+              />
+            </div>
+            <div class="inputContainer">
+              <input
+                type="number"
+                ngModel
+                name="phoneNumber"
+                phoneNumber
+                class="form-control"
+                required
+                placeholder="Phone number (Optional)"
+                min="1"
+                step="any"
+              />
+            </div>
+            <ion-button
+              type="submit"
+              expand="block"
+              fill="solid"
+              color="primary"
+              [disabled]="!f.valid"
+            >
+              Submit
+            </ion-button>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

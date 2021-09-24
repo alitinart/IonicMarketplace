@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ selectedListing.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card style="margin: 50px 0">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <img
+          [src]="selectedListing.image"
+          class="img-responsive cardImage"
+          alt=""
+        />
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle>{{ selectedListing.category }}</ion-card-subtitle>
+        <ion-card-title>{{ selectedListing.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ selectedListing.desc }} <br />
+        Price: {{ selectedListing.price }}$
+      </ion-card-content>
+    </ion-card>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <input
+        type="text"
+        ngModel
+        name="fullName"
+        id="fullName"
+        fullName
+        class="form-control"
+        required
+        placeholder="Full Name"
+      />
+      <div class="inputContainer">
+        <input
+          type="text"
+          ngModel
+          name="address"
+          id="address"
+          fullName
+          class="form-control"
+          required
+          placeholder="Address"
+        />
+      </div>
+      <div class="inputContainer">
+        <input
+          type="number"
+          ngModel
+          name="phoneNumber"
+          phoneNumber
+          class="form-control"
+          required
+          placeholder="Phone Number"
+          min="1"
+          step="any"
+        />
+      </div>
+      <ion-button
+        type="submit"
+        expand="block"
+        fill="solid"
+        color="primary"
+        [disabled]="!f.valid"
+      >
+        Submit
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

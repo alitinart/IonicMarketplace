@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <div class="lds-circle" *ngIf="isLoading">
+      <div></div>
+    </div>
+    <p style="text-align: center" class="loadingText" *ngIf="isLoading">
+      Loading...
+    </p>
+    <ion-card
+      *ngFor="let listing of listings; let i = index"
+      style="margin: 50px 0"
+    >
+      <div style="display: flex; align-items: center; justify-content: center">
+        <img [src]="listing.image" class="img-responsive cardImage" alt="" />
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle>{{ listing.category }}</ion-card-subtitle>
+        <ion-card-title>{{ listing.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ listing.desc }} <br />
+        Price: {{ listing.price }}$
+      </ion-card-content>
+
+      <ion-button
+        [routerLink]='["/tabs/buy", i]'
+        style="margin: 0 0 10px 10px"
+        fill="solid"
+        color="primary"
+      >
+        Buy
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,51 @@
+.addImage {
+  // padding: 50px;
+  font-size: 20px;
+  display: inline;
+  // background-color: rgba(128, 128, 128, 0.37);
+  // border-radius: 8px;
+  // transition: 0.5;
+  // width: 100%;  // color: white;
+  // &:hover {
+  // background-color: rgba(128, 128, 128, 0.596);
+  // }
+}
+.addImageIcon {
+  font-size: 25px;
+  margin: 10px 0 0;
+  background-color: rgba(128, 128, 128, 0.363);
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 20px;
+  padding: 20px 10px;
+  border-radius: 10px;
+}
+
+.section-header {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: red 2px solid;
+  &::placeholder {
+    color: red;
+  }
+  color: red;
+}
+
+.uploadedImage {
+  width: 165px;
+  border-radius: 10px;
+}

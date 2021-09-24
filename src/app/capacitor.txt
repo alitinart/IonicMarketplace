@@ -1,0 +1,2 @@
+ionic integrations disable capacitor
+ionic integrations enable capacitor

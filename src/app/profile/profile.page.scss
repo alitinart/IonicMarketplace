@@ -1,0 +1,26 @@
+.section-header {
+  text-align: center;
+  font-weight: 700;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: red 2px solid;
+  &::placeholder {
+    color: red;
+  }
+  color: red;
+}
+
+.form-control {
+  margin: 10px 0;
+}
+
+.buttonsContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

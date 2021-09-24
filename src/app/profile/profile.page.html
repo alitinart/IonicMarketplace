@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngIf="!loggedIn">
+    <h2 class="section-header">
+      <span *ngIf="loginMode">Login</span><span *ngIf="!loginMode">Signup</span>
+    </h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <input
+        type="email"
+        id="email"
+        required
+        ngModel
+        email
+        name="email"
+        placeholder="Email"
+        class="form-control"
+      />
+      <input
+        type="password"
+        id="password"
+        required
+        ngModel
+        password
+        name="password"
+        placeholder="Password"
+        class="form-control"
+      />
+      <div class="buttonsContainer">
+        <ion-button type="submit" color="primary" [disabled]="!f.valid">
+          Submit
+        </ion-button>
+        <ion-button type="button" (click)="changeMode()" color="primary">
+          <span *ngIf="loginMode">Switch to Signup</span>
+          <span *ngIf="!loginMode">Switch to Login</span>
+        </ion-button>
+      </div>
+    </form>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div class="container" *ngIf="loggedIn">
+    <ion-item style="margin-top: 20px">
+      <ion-avatar slot="start">
+        <img src="../../assets/pfp.png" />
+      </ion-avatar>
+      <ion-label>{{ user.email }}</ion-label>
+    </ion-item>
+    <label for="address" style="margin-top: 50px">Address</label>
+    <input
+      *ngIf="!isAddress"
+      type="text"
+      name="address"
+      [(ngModel)]="address"
+      id="address"
+      class="form-control"
+      placeholder="Country, City, Address"
+      required
+    />
+    <h3 *ngIf="isAddress" id="address">{{ user.address }}</h3>
+    <label for="phone">Phone Number</label>
+    <input
+      *ngIf="!isAddress"
+      type="number"
+      name="phone"
+      [(ngModel)]="phoneNumber"
+      id="phone"
+      class="form-control"
+      placeholder="+38349123123"
+      required
+    />
+    <ion-button
+      *ngIf="!isAddress"
+      (click)="submitInfo()"
+      expand="block"
+      fill="solid"
+      color="primary"
+      shape="round"
+      style="margin-top: 20px"
+    >
+      Submit
+    </ion-button>
+    <h3 *ngIf="isAddress" id="phone">{{ user.phoneNumber }}</h3>
+  </div>
+</ion-content>
+
+<ion-footer style="background: white">
+  <ion-button
+    (click)="logout()"
+    *ngIf="loggedIn"
+    expand="block"
+    fill="solid"
+    color="danger"
+  >
+    Logout
+  </ion-button>
+</ion-footer>
